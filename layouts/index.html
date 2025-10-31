@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VMXFlix - Latest Reviews</title>
+  <meta name="description" content="Latest Vivamax movie reviews on VMXFlix.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="header container">
+    <h1>VMXFlix</h1>
+    <nav><a href="/">Home</a> | <a href="/movies/">Movies</a></nav>
+  </header>
+  <main class="container">
+    {{ $paginator := .Paginate (where .Site.RegularPages "Section" "movies") }}
+    {{ range $paginator.Pages }}
+      <div class="list-item">
+        <div class="poster"><a href="{{ .RelPermalink }}"><img src="{{ .Params.poster }}" alt="{{ .Title }} poster"></a></div>
+        <div class="meta">
+          <h2 class="title"><a href="{{ .RelPermalink }}">{{ .Title }} ({{ .Params.release_year }})</a></h2>
+          <div class="subtitle">{{ range $i, $g := .Params.genres }}{{ if $i }}, {{ end }}{{ $g }}{{ end }} — Directed by {{ .Params.director }}</div>
+          <p>{{ .Summary }}</p>
+        </div>
+      </div>
+    {{ end }}
+    {{ template "_internal/pagination.html" . }}
+  </main>
+</body>
+</html>

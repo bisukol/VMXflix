@@ -1,0 +1,22 @@
+
+baseURL = "https://vmxflix.com/"
+languageCode = "en-us"
+title = "VMXFlix"
+theme = "vmxflix-clean"
+paginate = 10
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+canonifyURLs = true
+uglyURLs = false
+
+[permalinks]
+movies = "/:slug/"
+
+[taxonomies]
+genre = "genre"
+year = "year"
+
+[Params]
+  description = "Vivamax movie reviews, cast, director info — VMXFlix"
+  author = "VMXFlix"
+  mainMenu = true

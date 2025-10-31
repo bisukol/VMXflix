@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: "USERNAME/REPO" # set your GitHub repo
+  branch: "main"
+
+media_folder: "static/posters"
+public_folder: "/posters"
+
+collections:
+  - name: "movies"
+    label: "Movies"
+    folder: "content/movies"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Poster", name: "poster", widget: "image"}
+      - {label: "Release Year", name: "release_year", widget: "string"}
+      - {label: "Genres", name: "genres", widget: "list"}
+      - {label: "Director", name: "director", widget: "string"}
+      - {label: "Cast", name: "cast", widget: "list"}
+      - {label: "Rating", name: "rating", widget: "string"}
+      - {label: "Trailer", name: "trailer", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text"}

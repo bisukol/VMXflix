@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Title }} | VMXFlix</title>
+  <meta name="description" content="{{ with .Params.summary }}{{ . }}{{ else }}Movie review on VMXFlix.{{ end }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- JSON-LD movie schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Movie",
+    "name": "{{ .Title }}",
+    "director": {
+      "@type": "Person",
+      "name": "{{ .Params.director }}"
+    },
+    "actor": [
+      {{- $comma := "" -}}
+      {{- range $i, $c := .Params.cast -}}
+        {{ if $i }},{{ end }} { "@type": "Person", "name": "{{ $c }}" }
+      {{- end -}}
+    ],
+    "datePublished": "{{ .Params.release_year }}",
+    "url": "{{ .Permalink }}",
+    "image": "{{ .Params.poster }}"
+  }
+  </script>
+</head>
+<body>
+  {{ template "main" . }}
+</body>
+</html>

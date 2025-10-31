@@ -1,0 +1,1 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Genre: {{ .Title }} - VMXFlix</title><link rel="stylesheet" href="/css/style.css"></head><body><div class="container"><h1>Genre: {{ .Title }}</h1>{{ range .Pages }}<div><a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Params.release_year }})</div>{{ end }}</div></body></html>
